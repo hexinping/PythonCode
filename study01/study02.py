@@ -33,6 +33,7 @@ def printFormat(name, age):
     #   %是用与连接格式符号的
     print "name is %s" % name, " age is %d" % age
 
+
 if __name__ == "__main__":
 
     varsName()
