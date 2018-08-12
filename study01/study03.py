@@ -55,14 +55,20 @@ def print_in_oneline():
    print "2"
 
 
+def print_zhuanyi():
+
+    print "hhh '3\" "
+
+
+
 if __name__ == "__main__":
 
     print_format()
     inln_to_cmkg(1, 1)
-
+    inln_to_cmkg(1, 1)
     print_plus_format("2222", "/444")
-
     print_in_oneline()
+    print_zhuanyi()
 
 
 
