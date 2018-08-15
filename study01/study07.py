@@ -53,7 +53,7 @@ def file_opt1():
 
 def file_opt2():
 
-    to_file = "copy.txt"
+    to_file = config_path + "copy.txt"
     script, from_file = argv
 
     print "Copying from %s to %s" % (from_file, to_file)
@@ -66,10 +66,10 @@ def file_opt2():
 
     print "Ready, hit RETURN to continue, CTRL-C to abort."
 
-    raw_input()
+    # raw_input()
 
 
-    out_file = open(config_path + to_file, 'w')
+    out_file = open(to_file, 'a+')
 
     out_file.write(indata)
 
