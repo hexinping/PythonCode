@@ -37,6 +37,19 @@ def for_func1():
         print "element is %d" % x
 
 
+def while_fun():
+
+#for-loop 只能对一些东西的集合进行循环， while-loop 可以对任何对象进行驯化
+    i = 0
+    numbers = []
+
+    while i < 6:
+        numbers.append(i)
+        i += 1
+
+    for x in numbers :
+        print "x===%d" % x
 
 if __name__ == "__main__":
     for_func1()
+    while_fun()
