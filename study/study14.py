@@ -28,6 +28,8 @@ def list_func():
     print a, b, c
 
 
+def print_test():
+    print "jjjjjj"
 
 def dictionary_func():
 
@@ -71,9 +73,14 @@ def dictionary_func():
 
     print a , b
 
+    #字典里存储函数
+    states['func'] = print_test
+
+    states['func']()
+
 
 if __name__ == "__main__":
 
-    list_func()
+    # list_func()
 
-    # dictionary_func()
+    dictionary_func()
