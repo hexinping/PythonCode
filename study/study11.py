@@ -43,9 +43,13 @@ def while_fun():
     i = 0
     numbers = []
 
-    while i < 6:
+    while i < 100:
         numbers.append(i)
         i += 1
+
+        if i == 6 :
+            paus = raw_input(">")
+            break
 
     for x in numbers :
         print "x===%d" % x
