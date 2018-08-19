@@ -1,7 +1,13 @@
 # #_*_ coding:utf-8 _*_
 
 
+import  Utils
 
+def testA_func():
+
+    Utils.testA += 1
+
+    print "study14 Utils.testA",Utils.testA
 
 
 def list_func():
