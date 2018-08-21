@@ -42,6 +42,8 @@ def dictionary_func():
 
     print states["or"]
 
+    states["age"] = 12 #赋值
+
     #遍历key值 随机性
     #1
     for key in states:
@@ -72,6 +74,8 @@ def dictionary_func():
     b = states.get("and", "not find")
 
     print a , b
+
+
 
     #字典里存储函数
     states['func'] = print_test
