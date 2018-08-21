@@ -115,6 +115,14 @@ def os_dir_func():
     for x in dir_files:
         print x
 
+    # 当前目录
+    curDir = os.curdir
+    print curDir  #(.)
+
+    #当前操作平台 Window是'nt' Linux/Unix是'posix'
+    curOs = os.name
+    print curOs
+
 
 
 def listDir(rootDir):
@@ -161,6 +169,61 @@ def bianli_dirs():
     listDir(cur_path)
 
 
+
+
+REMOVE_FILE = "copy2.txt"
+def remove_file():
+
+    if exists(REMOVE_FILE):
+        #删除文件
+        os.remove(REMOVE_FILE)
+
+
+
+def syetem_cmd():
+
+    #运行系统命令
+    cmd = "pwd"
+    os.system(cmd)
+
+def os_path_func():
+
+    # "获取文件大小"
+
+    cur_path = os.getcwd()
+
+    print  cur_path
+
+    # os.path.isfile os.path.isdir ==>文件 目录
+    file = ""
+    for filename in os.listdir(cur_path):
+        pathname = os.path.join(cur_path, filename) #连接目录和文件名或者目录 使用"\"连接
+        if (os.path.isfile(pathname)):
+            #文件类型
+            if file == "":
+                file = pathname
+            print pathname + " is file"
+        elif (os.path.isdir(pathname)):
+            #文件夹类型
+            print pathname + " is dir"
+
+    #os.path.split 将path分割成目录和文件名的二元组返回
+    array = os.path.split(cur_path) #返回一个元组：不可变化的list
+    for arr in array:
+        print arr
+
+
+    #os.path.basename 返回文件名
+    file_name = os.path.basename(file)
+    print "file_name ", file_name
+
+    #返回文件路径
+    file_path = os.path.dirname(file)
+    print "file_path ", file_path
+
+    print "文件路径+文件名：",os.path.join(file_path,file_name)
+
+
 if __name__ == "__main__":
 
     # raw_input_and_input()
@@ -170,4 +233,10 @@ if __name__ == "__main__":
 
     # os_dir_func()
 
-    bianli_dirs()
+    # bianli_dirs()
+
+    # remove_file()
+
+    # syetem_cmd()
+
+    os_path_func()
