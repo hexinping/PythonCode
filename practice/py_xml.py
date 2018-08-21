@@ -69,7 +69,7 @@ def dom_read_fun():
 #https://www.jb51.net/article/74942.htm
 
 XML_FILE = "movies.xml"
-from ElementTree_XML import ElementTree_Class as EleClass
+from tools.ElementTree_XML import ElementTree_Class as EleClass
 
 def elementTree_func():
 
