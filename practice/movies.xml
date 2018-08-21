@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
 <collection shelf="New Arrivals">
 <movie title="Enemy Behind">
    <type>War, Thriller</type>
@@ -5,8 +6,7 @@
    <year>2003</year>
    <rating>PG</rating>
    <stars>10</stars>
-   <description>Talk about a US-Japan war</description>
-</movie>
+   <person age="15" money="200000">this is the firest content</person></movie>
 <movie title="Transformers">
    <type>Anime, Science Fiction</type>
    <format>DVD</format>
