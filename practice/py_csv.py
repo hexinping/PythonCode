@@ -80,18 +80,13 @@ def csv_write():
 
 
 
-def update_csv(datas, name, newValue):
-
-    for row in datas:
-        for key, value in row.items():
-            if key == name :
-               row[key] = newValue
-               return True
-
-    return False
+def update_csv(datas, name, rowIndex , newValue):
+    if rowIndex == 0 or  rowIndex == None:
+        return
+    datas[rowIndex - 1][name] = newValue
 
 
-def write_csv(file, headers, csvDatas, mode):
+def write_csv(file, headers, csvDatas, mode = None):
 
     if mode == None:
         mode = "wb"
@@ -136,13 +131,13 @@ def csv_dic_rw():
 
     #使用DictWriter类，可以写入字典形式的数据，同样键也是标头（表格第一行）。
     headers = ['name', 'age']
-
-    datas = [{'name': 'Bob', 'age': 23},
-             {'name': 'Jerry', 'age': 44},
-             {'name': 'Tom', 'age': 15}
-             ]
-
-    write_csv(CSV_FILE, headers, datas)
+    #
+    # datas = [{'name': 'Bob', 'age': 23},
+    #          {'name': 'Jerry', 'age': 44},
+    #          {'name': 'Tom', 'age': 15}
+    #          ]
+    #
+    # write_csv(CSV_FILE, headers, datas)
 
 
     csvDatas = read_csv(CSV_FILE1, headers)
@@ -150,7 +145,7 @@ def csv_dic_rw():
     #修改某项 就是读到所有数据然后修改数据，然后重新写入 用w模式
 
     ###########csvDatas传进去的是引用
-    update_csv(csvDatas,"age",28)
+    update_csv(csvDatas,"age", 1, 198)
     write_csv(CSV_FILE1, headers, csvDatas)
 
 
