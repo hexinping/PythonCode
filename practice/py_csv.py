@@ -34,7 +34,7 @@ def csv_read():
         #     print(reader.line_num, row)
 
         #遍历数据
-        csvDatas = []
+        csv_datas = []
 
         # for row in datas:
         #     for col in row:
@@ -56,7 +56,7 @@ def csv_read():
 
                 t.append(datas[row][col])
 
-            csvDatas.append(t)
+            csv_datas.append(t)
 
 
 
@@ -101,7 +101,7 @@ def write_csv(file, headers, csvDatas, mode = None):
         writer.writerows(csvDatas)
 
 def read_csv(file, headers):
-    csvDatas = []
+    csv_datas = []
     with open(file) as f:
         reader = csv.DictReader(f)
         for row in reader:
@@ -110,8 +110,8 @@ def read_csv(file, headers):
             for key in headers:
                 t[key] = utf_to_gb2312(row[key])
 
-            csvDatas.append(t)
-    return csvDatas
+            csv_datas.append(t)
+    return csv_datas
 
 def csv_dic_rw():
     '''
@@ -139,14 +139,13 @@ def csv_dic_rw():
     #
     # write_csv(CSV_FILE, headers, datas)
 
-
-    csvDatas = read_csv(CSV_FILE1, headers)
+    csv_datas = read_csv(CSV_FILE1, headers)
 
     #修改某项 就是读到所有数据然后修改数据，然后重新写入 用w模式
 
     ###########csvDatas传进去的是引用
-    update_csv(csvDatas,"age", 1, 198)
-    write_csv(CSV_FILE1, headers, csvDatas)
+    update_csv(csv_datas,"age", 1, 198)
+    write_csv(CSV_FILE1, headers, csv_datas)
 
 
 if __name__ == "__main__":
