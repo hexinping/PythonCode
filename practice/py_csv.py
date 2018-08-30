@@ -91,9 +91,11 @@ def update_csv(datas, name, newValue):
     return False
 
 
-def write_csv(file, headers, csvDatas):
+def write_csv(file, headers, csvDatas, mode):
 
-    with open(file, 'wb') as f:
+    if mode == None:
+        mode = "wb"
+    with open(file, mode) as f:
         # 标头在这里传入，作为第一行数据
         writer = csv.DictWriter(f, headers)
         writer.writeheader()
