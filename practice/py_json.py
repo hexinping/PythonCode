@@ -38,6 +38,22 @@ def py_to_json():
     #使用参数让 JSON 数据格式化输出：
     print json.dumps({'a': 'Runoob', 'b': 7}, sort_keys=True, indent=4, separators=(',', ': '))
 
+    test_dict = {'bigberg': [7600, {1: [['iPhone', 6300], ['Bike', 800], ['shirt', 300]]}]}
+
+    # dump: 将数据写入json文件中
+    with open("record.json", "w") as f:
+        json.dump(test_dict, f)
+        print("加载入文件完成...")
+
+    with open("record.json", 'r') as load_f:
+        load_dict = json.load(load_f)
+        print(load_dict)
+    load_dict['smallberg'] = [8200, {1: [['Python', 81], ['shirt', 300]]}]
+    print(load_dict)
+
+    with open("record.json", "w") as dump_f:
+        json.dump(load_dict, dump_f)
+
 
 '''
 json 类型转换到 python 的类型对照表：
@@ -95,6 +111,6 @@ if __name__ == "__main__":
 
     py_to_json()
 
-    json_to_py()
+    # json_to_py()
 
-    demjson_func()
+    # demjson_func()
