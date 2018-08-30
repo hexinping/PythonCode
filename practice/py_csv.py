@@ -77,12 +77,52 @@ def csv_write():
         # 还可以写入多行
         writer.writerows(datas)
 
+
+
+
+def update_csv(datas, name, newValue):
+
+    for row in datas:
+        for key, value in row.items():
+            if key == name :
+               row[key] = newValue
+               return True
+
+    return False
+
+
+def write_csv(file, headers, csvDatas):
+
+    with open(file, 'wb') as f:
+        # 标头在这里传入，作为第一行数据
+        writer = csv.DictWriter(f, headers)
+        writer.writeheader()
+        # for row in datas:
+        #     writer.writerow(row)
+
+        # 还可以写入多行
+        writer.writerows(csvDatas)
+
+def read_csv(file, headers):
+    csvDatas = []
+    with open(file) as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            # Max TemperatureF是表第一行的某个数据，作为key
+            t = {}
+            for key in headers:
+                t[key] = utf_to_gb2312(row[key])
+
+            csvDatas.append(t)
+    return csvDatas
+
 def csv_dic_rw():
     '''
     DictReader和DictWriter对象
     使用DictReader可以像操作字典那样获取数据，把表的第一行（一般是标头）作为key。可访问每一行中那个某个key对应的数据。
 
     '''
+
     with open(CSV_FILE) as f:
         reader = csv.DictReader(f)
         for row in reader:
@@ -100,15 +140,16 @@ def csv_dic_rw():
              {'name': 'Tom', 'age': 15}
              ]
 
-    with open(CSV_FILE1, 'wb') as f:
-        # 标头在这里传入，作为第一行数据
-        writer = csv.DictWriter(f, headers)
-        writer.writeheader()
-        # for row in datas:
-        #     writer.writerow(row)
+    write_csv(CSV_FILE, headers, datas)
 
-        # 还可以写入多行
-        writer.writerows(datas)
+
+    csvDatas = read_csv(CSV_FILE1, headers)
+
+    #修改某项 就是读到所有数据然后修改数据，然后重新写入 用w模式
+
+    ###########csvDatas传进去的是引用
+    update_csv(csvDatas,"age",28)
+    write_csv(CSV_FILE1, headers, csvDatas)
 
 
 if __name__ == "__main__":
