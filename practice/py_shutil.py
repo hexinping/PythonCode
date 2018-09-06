@@ -56,6 +56,7 @@ def func1():
     :return:
     '''
     #shutil.copytree(源目录，目标目录)：可以递归copy多个目录到指定目录下
+    # 子目录也一起拷贝 目标目录跟源目录结构一样
     # shutil.copytree("doc","doc1")
 
     #shutil.rmtree(目标目录)：可以递归删除目录下的目录及文件。
@@ -67,6 +68,8 @@ def func1():
     #shutil.make_archive()：可以压缩，打包文件。
     # 参数意思：压缩包文件名，压缩格式，打包路径
     shutil.make_archive("doc1", "zip", "doc1")
+
+
 
 if __name__ == "__main__":
     print "shutil-----------"
