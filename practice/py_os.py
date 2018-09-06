@@ -167,6 +167,8 @@ def os_path_func():
 
     print "文件路径+文件名：", os.path.join(file_path, file_name)
 
+    # os.path.relpath(path[, start])  #从start开始计算相对路径
+
 
 if __name__ == "__main__":
 
