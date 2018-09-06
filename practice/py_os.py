@@ -154,6 +154,9 @@ def os_path_func():
     for arr in array:
         print arr
 
+    #将文件名和扩展名分开 os.path.splitext()
+
+
     # os.path.basename 返回文件名
     file_name = os.path.basename(file)
     print "file_name ", file_name
@@ -178,3 +181,4 @@ if __name__ == "__main__":
     # syetem_cmd()
 
     os_path_func()
+
