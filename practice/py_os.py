@@ -7,6 +7,7 @@
 import os
 from os.path import exists
 
+
 '''
     读取键盘输入
 
@@ -37,6 +38,7 @@ def rename_func():
     if exists(FILE_NAME):
         os.rename(FILE_NAME, FILE_NEW_NAME)
 
+    os.chdir()
 
 def os_dir_func():
     dir_name = "newDirTest"
@@ -71,6 +73,9 @@ def os_dir_func():
     # 当前操作平台 Window是'nt' Linux/Unix是'posix'
     curOs = os.name
     print curOs
+
+    ## 获取当前执行脚本所在目录
+    ###os.path.dirname(os.path.abspath(__file__))
 
 
 def listDir(rootDir):
