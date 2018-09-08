@@ -189,3 +189,17 @@ if __name__ == "__main__":
 
     os_path_func()
 
+    # print __file__
+    # print os.path.abspath(__file__)
+    #
+    # file_name = os.path.basename(__file__)
+    # print file_name
+    #
+    # dir_name = os.path.dirname(__file__)
+    # print dir_name
+    #
+    # relPath = os.path.relpath(dir_name, '/Users/hexinping/Desktop/pyCode')
+    # print relPath
+    #
+    # print os.getcwd()
+
