@@ -1,4 +1,4 @@
-
+# coding:utf-8
 import xlrd
 import io
 import os,sys
@@ -27,7 +27,9 @@ def GenLua(filename,outdir,strid,isLocal=True):
 
 	wb=xlrd.open_workbook(filename)
 	for s in wb.sheets():
-		short_name=s.name+"_conf"
+		# 输出lua名称
+		# short_name=s.name+"_conf"
+		short_name=s.name
 		require_list.append((short_name).lower())
 		var_name=(short_name).lower()
 		filename_gen=(short_name+".lua").lower()
@@ -37,8 +39,8 @@ def GenLua(filename,outdir,strid,isLocal=True):
 		if(isLocal==True):
 			localname="local "
 		f.write(localname+var_name+"={\n")
-
-		for row in range(s.nrows):
+		#第一行为key名，从第4行开始读，中间两行用来写注释标明
+		for row in range(3,s.nrows):
 			if strid:
 				if(row>0):
 					colkey=s.cell(row,1).value.encode('utf-8')
@@ -67,9 +69,17 @@ def GenLua(filename,outdir,strid,isLocal=True):
 
 							if isinstance(cellvalue,basestring):
 								if cellvalue.isdigit():
+									# 数字类型
 									row_str+="		"+colname+" = "+str(int(cellvalue)) + ""
 								else:
-									row_str+="		"+colname+" = \""+cellvalue.encode("utf-8") + "\""
+									cellvalue = cellvalue.encode("utf-8")
+									if cellvalue.count('[') > 0:
+										#数组类型
+										cellvalue = cellvalue.replace('[','{').replace(']','}').replace('，',',').decode('utf-8')
+										row_str+="		"+colname+" = "+cellvalue.encode("utf-8") + ""
+									else:
+										row_str+="		"+colname+" = \""+cellvalue.encode("utf-8") + "\""
+									
 							else:
 								row_str+="		"+colname+" = "+str(int(cellvalue)) + ""
 
@@ -113,5 +123,5 @@ def traverse(srcpath):
 				print("%s" % scr_sub_path[2:])
 				if scr_sub_path.find("~$")==-1 and scr_sub_path[-4:]=="xlsx":
 					GenLua(scr_sub_path[2:],outdirName,False)
-
-traverse(".")
+if __name__ == '__main__':
+	traverse(".")
